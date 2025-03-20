@@ -79,7 +79,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
     <div class="wrapper">
       <h3>GitHub Repo: <a href="https://github.com/${this.org}/${this.repo}">${this.org}/${this.repo}</a></h3>
       <slot></slot>
-      ${this.items.filter((item, index) => index < 9).map((item) =>
+      ${this.items.filter((item, index) => index < 12).map((item) =>
           html`
           <div class="rpg-wrapper">
           <rpg-character  seed="${item.login}"></rpg-character>
