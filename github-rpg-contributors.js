@@ -63,6 +63,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+
       }
       h3 span {
         font-size: var(--github-rpg-contributors-label-font-size, var(--ddd-font-size-s));
@@ -81,7 +82,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       <slot></slot>
       ${this.items.filter((item, index) => index < 12).map((item) =>
           html`
-          <div class="rpg-wrapper">
+          <div class="rpg-wrapper" @click=${() => window.open(`https://github.com/${item.login}`, '_blank')}>
           <rpg-character  seed="${item.login}"></rpg-character>
           <div class="contdetails">
           ${item.login}
