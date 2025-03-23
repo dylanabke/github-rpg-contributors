@@ -78,7 +78,11 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="wrapper">
-      <h3>GitHub Repo: <a href="https://github.com/${this.org}/${this.repo}">${this.org}/${this.repo}</a></h3>
+      <h3>GitHub Repo: <a href="https://github.com/${this.organization}/${this.repository}">${this.organization}/${this.repository}</a></h3>
+      <input type="text" value="${this.organization}" @input="${(e) => this.organization = e.target.value}" />
+      <input type="text" value="${this.repository}" @input="${(e) => this.repository = e.target.value}" />
+      <button @click="${this.getData}">Get Contributors</button>
+
       <slot></slot>
       ${this.items.filter((item, index) => index < 12).map((item) =>
           html`
