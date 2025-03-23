@@ -47,6 +47,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       items: { type: Array },
       organization: { type: String },
       repository: { type: String },
+      limit: { type: Number },
     };
   }
 
@@ -63,6 +64,9 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+        display: flex;
+        flex-direction: column;
+
 
       }
       h3 span {
@@ -70,6 +74,15 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
       }
       .rpg-wrapper {
         display: inline-flex;
+
+      }
+      input {
+        padding: var(--ddd-spacing-2);
+        font-size: var(--ddd-font-size-s);
+      }
+      button {
+        padding: var(--ddd-spacing-2);
+        font-size: var(--ddd-font-size-s);
       }
     `];
   }
@@ -100,7 +113,7 @@ export class GithubRpgContributors extends DDDSuper(I18NMixin(LitElement)) {
   updated(changedProperties) {
     super.updated(changedProperties);
     // see if value changes from user input and is not empty
-    if (changedProperties.has('organization')) {
+    if (changedProperties.has('organization') || changedProperties.has('repository')) {
       this.getData();
     }
 
